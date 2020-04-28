@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include ('../components/head') %>
+</head>
+
+<body>
+    <header>
+        <%- include ('../components/header') %>
+    </header>
+    <main>
+        <body>
+<h1>Welcome!</h1>
+<p>This is not going to be anything special.</p>
+<form id="myform">
+<input id="name" type="text" placeholder="Name" />
+<input id="id" type="text" placeholder="ID #" />
+<input id="fetcher" type="submit" value="Fetch" />
+</form>
+<div id="output">
+</div>
+<script>
+const user = document.getElementById('name');
+const prop = document.getElementById('id');
+const fetcher = document.getElementById('fetcher');
+const myform = document.getElementById('myform');
+const output = document.getElementById('output');
+myform.addEventListener('submit', (event) => {
+event.preventDefault();
+fetch(`http://localhost:3000/lookup/${user.value}/${prop.value}`)
+.then((response) => {
+console.log('response: ', response);
+return response.json();
+})
+.then((data) => {
+console.log(data);
+output.textContent = data;
+})
+.catch((err) => {
+console.log('Error fetching the page: ', err);
+})
+})
+</script>
+</body>
+    </main>
+    <footer>
+        <%- include ('../components/footer') %>
+    </footer>
+</body>
+
+</html>
