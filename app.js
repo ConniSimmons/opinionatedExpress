@@ -37,6 +37,16 @@ app.get('/profile', (req, res, next) => {
     });
   });
 
+  // create a route for the notfound page
+app.get('/notfound', (req, res, next) => {
+  res.render('pages/notfound', {
+    color: 'red',
+    title: 'No result',
+    users,
+    element: '*Confidential*',
+  });
+});
+
 const profileLookup = (_id) => {
     /* 
         This function should return an array of matching users
