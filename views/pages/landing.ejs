@@ -11,24 +11,22 @@
     </header>
     <main>
         <body>
-<h1>Welcome!</h1>
-<p>This is not going to be anything special.</p>
+<h1>Welcome</h1>
+<p>Enter Employee Information Here.</p>
 <form id="myform">
 <input id="name" type="text" placeholder="Name" />
-<input id="id" type="text" placeholder="ID #" />
 <input id="fetcher" type="submit" value="Fetch" />
 </form>
 <div id="output">
 </div>
 <script>
 const user = document.getElementById('name');
-const prop = document.getElementById('id');
 const fetcher = document.getElementById('fetcher');
 const myform = document.getElementById('myform');
 const output = document.getElementById('output');
 myform.addEventListener('submit', (event) => {
 event.preventDefault();
-fetch(`http://localhost:3000/lookup/${user.value}/${prop.value}`)
+fetch(`http://localhost:3000/lookup/${user.value}`)
 .then((response) => {
 console.log('response: ', response);
 return response.json();

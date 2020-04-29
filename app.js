@@ -6,27 +6,36 @@ const app = express();
 //app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+// create a route for the landing page
+app.get('/', (req, res, next) => {
+    res.render('pages/landing', {
+        color: 'red',
+        title: 'Welcome',
+        users,
+        element: '*For Internal Use Only*',
+    });
+  });
+
 // create a route for the index page
 app.get('/index', (req, res, next) => {
     res.render('pages/index', {
         color: 'red',
-        title: 'Welcome',
+        title: 'User List',
+
         users,
         element: '<div>Some text</div>',
     });
 });
 
-// create a route for the index page
-app.get('/', (req, res, next) => {
-  res.render('pages/landing', {
+// create a route for the profile page
+app.get('/profile', (req, res, next) => {
+    res.render('pages/profile', {
       color: 'red',
-      title: 'Welcome',
+      title: 'Individual Profile',
       users,
-      element: '<div>Some text</div>',
+      element: '*Confidential*',
+    });
   });
-});
-
-
 
 const profileLookup = (_id) => {
     /* 
@@ -57,135 +66,122 @@ app.get('/profile/:id', (req, res, next) => {
 
     console.log('found user: ', user);
     res.render('pages/profile', {
-        title: `Profile > ${users.first_name}`,
+        title: `Profile > ${user.name}`,
         user,
     });
 });
 
 const users = [{
-  "id": 1,
-  "name": "Werner Olczyk",
-  "email": "wolczyk0@howstuffworks.com",
-  "gender": "Male",
-  "ip_address": "54.160.211.154"
-}, {
-  "id": 2,
-  "name": "Francesco Dressell",
-  "email": "fdressell1@posterous.com",
-  "gender": "Male",
-  "ip_address": "178.138.59.20"
-}, {
-  "id": 3,
-  "name": "Reinwald Knottley",
-  "email": "rknottley2@stumbleupon.com",
-  "gender": "Male",
-  "ip_address": "163.180.87.78"
-}, {
-  "id": 4,
-  "name": "Jeanna Cruikshanks",
-  "email": "jcruikshanks3@homestead.com",
-  "gender": "Female",
-  "ip_address": "211.246.40.7"
-}, {
-  "id": 5,
-  "name": "Jeth Varran",
-  "email": "jvarran4@163.com",
-  "gender": "Male",
-  "ip_address": "210.19.241.106"
-}, {
-  "id": 6,
-  "name": "Brittne Dunstone",
-  "email": "bdunstone5@scientificamerican.com",
-  "gender": "Female",
-  "ip_address": "146.29.135.127"
-}, {
-  "id": 7,
-  "name": "Davey Yakovitch",
-  "email": "dyakovitch6@sogou.com",
-  "gender": "Male",
-  "ip_address": "33.22.118.139"
-}, {
-  "id": 8,
-  "name": "Homer Cherm",
-  "email": "hcherm7@list-manage.com",
-  "gender": "Male",
-  "ip_address": "101.247.66.69"
-}, {
-  "id": 9,
-  "name": "Kristan Mirfin",
-  "email": "kmirfin8@google.com.br",
-  "gender": "Female",
-  "ip_address": "59.170.25.74"
-}, {
-  "id": 10,
-  "name": "Jo Cutts",
-  "email": "jcutts9@about.com",
-  "gender": "Female",
-  "ip_address": "118.230.149.231"
-}, {
-  "id": 11,
-  "name": "Walsh Tidmas",
-  "email": "wtidmasa@digg.com",
-  "gender": "Male",
-  "ip_address": "171.234.122.77"
-}, {
-  "id": 12,
-  "name": "Olimpia Pottie",
-  "email": "opottieb@bloglines.com",
-  "gender": "Female",
-  "ip_address": "107.235.68.29"
-}, {
-  "id": 13,
-  "name": "Waneta Moscone",
-  "email": "wmosconec@hibu.com",
-  "gender": "Female",
-  "ip_address": "19.10.139.228"
-}, {
-  "id": 14,
-  "name": "Carl Zahor",
-  "email": "czahord@netvibes.com",
-  "gender": "Male",
-  "ip_address": "205.21.191.115"
-}, {
-  "id": 15,
-  "name": "Jeremy Blaxall",
-  "email": "jblaxalle@hubpages.com",
-  "gender": "Male",
-  "ip_address": "1.33.10.13"
-}, {
-  "id": 16,
-  "name": "Tracey Jerrome",
-  "email": "tjerromef@japanpost.jp",
-  "gender": "Female",
-  "ip_address": "61.57.39.223"
-}, {
-  "id": 17,
-  "name": "Lester Canacott",
-  "email": "lcanacottg@pen.io",
-  "gender": "Male",
-  "ip_address": "190.166.43.37"
-}, {
-  "id": 18,
-  "name": "Rudolph Coopey",
-  "email": "rcoopeyh@ucsd.edu",
-  "gender": "Male",
-  "ip_address": "210.54.104.171"
-}, {
-  "id": 19,
-  "name": "Abbie Donkersley",
-  "email": "adonkersleyi@homestead.com",
-  "gender": "Male",
-  "ip_address": "89.99.70.21"
-}, {
-  "id": 20,
-  "name": "Frank Ashbrook",
-  "email": "fashbrookj@cdbaby.com",
-  "gender": "Female",
-  "ip_address": "248.34.140.151"
-}]
-app.listen(port, (err) => {
+    name: "Olly Hanway",
+    email: "ohanway0@google.pl",
+    id: 1,
+    gender: "Male"
+  }, {
+    name: "Bartlet Lotze",
+    email: "blotze1@newyorker.com",
+    id: 2,
+    gender: "Male"
+  }, {
+    name: "Gael Braun",
+    email: "gbraun2@shop-pro.jp",
+    id: 3,
+    gender: "Male"
+  }, {
+    name: "Muffin Duding",
+    email: "mduding3@amazon.com",
+    id: 4,
+    gender: "Female"
+  }, {
+    name: "Rici Hamblett",
+    email: "rhamblett4@bloglines.com",
+    id: 5,
+    gender: "Female"
+  }, {
+    name: "Nicolette Besset",
+    email: "nbesset5@ovh.net",
+    id: 6,
+    gender: "Female"
+  }, {
+    name: "Jamey Skyner",
+    email: "jskyner6@umich.edu",
+    id: 7,
+    gender: "Male"
+  }, {
+    name: "Giorgi Jarrelt",
+    email: "gjarrelt7@buzzfeed.com",
+    id: 8,
+    gender: "Male"
+  }, {
+    name: "Ash Foyster",
+    email: "afoyster8@tiny.cc",
+    id: 9,
+    gender: "Male"
+  }, {
+    name: "Danika Faircliff",
+    email: "dfaircliff9@uiuc.edu",
+    id: 10,
+    gender: "Female"
+  }, {
+    name: "Vlad Niesegen",
+    email: "vniesegena@bing.com",
+    id: 11,
+    gender: "Male"
+  }, {
+    name: "Phil Ortsmann",
+    email: "portsmannb@eepurl.com",
+    id: 12,
+    gender: "Male"
+  }, {
+    name: "Marrilee Wallicker",
+    email: "mwallickerc@google.nl",
+    id: 13,
+    gender: "Female"
+  }, {
+    name: "Kelli Cowins",
+    email: "kcowinsd@un.org",
+    id: 14,
+    gender: "Female"
+  }, {
+    name: "Lynsey Antczak",
+    email: "lantczake@narod.ru",
+    id: 15,
+    gender: "Female"
+  }, {
+    name: "Gregoire Bracken",
+    email: "gbrackenf@desdev.cn",
+    id: 16,
+    gender: "Male"
+  }, {
+    name: "Nyssa Thebeaud",
+    email: "nthebeaudg@yahoo.co.jp",
+    id: 17,
+    gender: "Female"
+  }, {
+    name: "Adelheid Hrachovec",
+    email: "ahrachovech@bandcamp.com",
+    id: 18,
+    gender: "Female"
+  }, {
+    name: "Devin Babin",
+    email: "dbabini@imageshack.us",
+    id: 19,
+    gender: "Male"
+  }, {
+    name: "Cynthie Abrahart",
+    email: "cabrahartj@dell.com",
+    id: 20,
+    gender: "Female"
+  }]
+  const logger = (req, res, next) => {
+    console.log(req.method, req.path);
+    next();
+  }
+  app.use(logger);
+  app.use(express.json());
+  
+  app.listen(port, (err) => {
     if (err) {
-        console.log('Error launching server: ', err);
+      console.log('Error launching server: ', err);
     }
     console.log(`Application is listening on port ${port}...`);
-});
+  });

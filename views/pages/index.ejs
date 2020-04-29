@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-
-<head>
+<body>
+    <head>
     <%- include ('../components/head') %>
 </head>
-
-<body>
     <header>
         <%- include ('../components/header') %>
     </header>
@@ -14,14 +10,10 @@
             <h1>User List</h1>
             <ul>
                 <% users.forEach(function(user){ %>
-                <li><a href="/profile/<%= users.id %>"><%= user.name %></a></li>
+                <li><a href="/profile/<%= user.id %>"><%= user.name %></a></li>
                 <% }); %>
             </ul>
-        </div>
-        <%= element %>
-        <br />
-        <%- element %>
-    </main>
+            </main>
     <footer>
         <%- include ('../components/footer') %>
     </footer>
