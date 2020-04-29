@@ -23,7 +23,7 @@ app.get('/index', (req, res, next) => {
         title: 'User List',
 
         users,
-        element: '<div>Some text</div>',
+        element: 'Some text',
     });
 });
 
@@ -80,97 +80,97 @@ const users = [{
     name: "Bartlet Lotze",
     email: "blotze1@newyorker.com",
     id: 2,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Gael Braun",
     email: "gbraun2@shop-pro.jp",
     id: 3,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Muffin Duding",
     email: "mduding3@amazon.com",
     id: 4,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Rici Hamblett",
     email: "rhamblett4@bloglines.com",
     id: 5,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Nicolette Besset",
     email: "nbesset5@ovh.net",
     id: 6,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Jamey Skyner",
     email: "jskyner6@umich.edu",
     id: 7,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Giorgi Jarrelt",
     email: "gjarrelt7@buzzfeed.com",
     id: 8,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Ash Foyster",
     email: "afoyster8@tiny.cc",
     id: 9,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Danika Faircliff",
     email: "dfaircliff9@uiuc.edu",
     id: 10,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Vlad Niesegen",
     email: "vniesegena@bing.com",
     id: 11,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Phil Ortsmann",
     email: "portsmannb@eepurl.com",
     id: 12,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Marrilee Wallicker",
     email: "mwallickerc@google.nl",
     id: 13,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Kelli Cowins",
     email: "kcowinsd@un.org",
     id: 14,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Lynsey Antczak",
     email: "lantczake@narod.ru",
     id: 15,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Gregoire Bracken",
     email: "gbrackenf@desdev.cn",
     id: 16,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Nyssa Thebeaud",
     email: "nthebeaudg@yahoo.co.jp",
     id: 17,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Adelheid Hrachovec",
     email: "ahrachovech@bandcamp.com",
     id: 18,
-    gender: "Female"
+    gender: "Female",
   }, {
     name: "Devin Babin",
     email: "dbabini@imageshack.us",
     id: 19,
-    gender: "Male"
+    gender: "Male",
   }, {
     name: "Cynthie Abrahart",
     email: "cabrahartj@dell.com",
     id: 20,
-    gender: "Female"
+    gender: "Female",
   }]
   const logger = (req, res, next) => {
     console.log(req.method, req.path);
