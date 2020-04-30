@@ -13,31 +13,26 @@
         <body>
 <h1>Welcome</h1>
 <p>Enter Employee Information Here.</p>
-<form id="myform">
-<input id="name" type="text" placeholder="Search" />
-<input id="fetcher" type="submit" value="Fetch" />
+<form id="myForm">
+    <label>Search:</label><input id="search" type="text" />
+    <input type="submit" value="Search" />
 </form>
-<div id="output">
-</div>
+
 <script>
-const user = document.getElementById('name');
-const fetcher = document.getElementById('fetcher');
-const myform = document.getElementById('myform');
-const output = document.getElementById('output');
-myform.addEventListener('submit', (event) => {
-event.preventDefault();
-fetch(`http://localhost:3000/lookup/${user.value}`)
-.then((response) => {
-console.log('response: ', response);
-return response.json();
-})
-.then((data) => {
-console.log(data);
-output.textContent = data;
-})
-.catch((err) => {
-console.log('Error fetching the page: ', err);
-})
+const myForm = document.getElementById('myForm');
+const searchField = document.getElementById('search');
+myForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    fetch(`/search/${searchField.value}`)
+        .then((result) => {
+            return result.json();
+        })
+        .then((data) => {
+            console.log('data: ', data);
+        })
+        .catch((err) => {
+            console.log('error when fetching: ', err);
+        });
 })
 </script>
 </body>
@@ -45,6 +40,5 @@ console.log('Error fetching the page: ', err);
     <footer>
         <%- include ('../components/footer') %>
     </footer>
-</body>
 
 </html>

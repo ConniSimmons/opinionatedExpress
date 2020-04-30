@@ -21,7 +21,6 @@ app.get('/index', (req, res, next) => {
     res.render('pages/index', {
         color: 'red',
         title: 'User List',
-
         users,
         element: 'Some text',
     });
@@ -45,6 +44,15 @@ app.get('/notfound', (req, res, next) => {
     users,
     element: '*Confidential*',
   });
+});
+
+// basic search code for form
+app.get('/search/:name', (req, res, next) => {
+  res.json(users.filter((user) => {
+      // return true if the search name matches even PART
+      // of the user name
+      return user.name.indexOf(req.params.name) !== -1;
+  }))
 });
 
 const profileLookup = (_id) => {
@@ -182,12 +190,12 @@ const users = [{
     id: 20,
     gender: "Female",
   }]
-  const logger = (req, res, next) => {
-    console.log(req.method, req.path);
-    next();
-  }
-  app.use(logger);
-  app.use(express.json());
+  app.use(middle); 
+		function middle(req, res, next) {
+			console.log('Server has received a request. . . ');
+			next();
+			};
+
   
   app.listen(port, (err) => {
     if (err) {
