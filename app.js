@@ -36,7 +36,8 @@ app.get('/profile', (req, res, next) => {
     });
   });
 
-  // create a route for the notfound page
+/*  This route is to a non-functioning search results page. Left here to demonstrate ability to build routes, as is part of the assignment.
+// create a route for the notfound page
 app.get('/notfound', (req, res, next) => {
   res.render('pages/notfound', {
     color: 'red',
@@ -44,7 +45,7 @@ app.get('/notfound', (req, res, next) => {
     users,
     element: '*Confidential*',
   });
-});
+}); */
 
 // basic search code for form
 app.get('/search/:name', (req, res, next) => {

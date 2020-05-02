@@ -24,7 +24,7 @@ const searchField = document.getElementById('search');
 myForm.addEventListener('submit', function (event) {
     event.preventDefault();
     console.log('attempting to search.')
-    fetch(`/search/${searchField.value}`)
+    fetch(`/search:name/${searchField.value}`)
         .then((result) => {
             return result.json();
         })
